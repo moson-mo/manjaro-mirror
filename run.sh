@@ -22,8 +22,8 @@ SYNC_CRON_PATTERN="*/30 * * * *"
 
 # User/group id of user with access to the data folder
 # If blank it falls back to the root user.
-LOCAL_USER_ID=1000
-LOCAL_GROUP_ID=1000
+LOCAL_USER_ID=""
+LOCAL_GROUP_ID=""
 
 # Runs in daemon mode by default, change to "it" for interactive mode
 MODE="d"
