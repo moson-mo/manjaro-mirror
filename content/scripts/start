@@ -1,11 +1,24 @@
 #!/bin/sh
 
+# in case container was restarted, we get rid of the lock file
+if [ -e /tmp/rsync-manjaro.lock ]
+then
+    rm /tmp/rsync-manjaro.lock
+fi
+
+# setup cron job for mirror sync
 ./scripts/set_crontab
+
+# in case user and group ID's were provided we create a local user/group with same ID's and run sync with that account
 if [ $USER_ID ] && [ $GROUP_ID ]
 then
     addgroup -g $GROUP_ID docker
     adduser -D -H -u $USER_ID -G docker docker
     export RUNAS_USER=1
 fi
+
+# run initial sync
 ./scripts/sync_mirror &
+
+# start nginx webserver
 nginx
