@@ -7,3 +7,4 @@ RUN apk add rsync
 COPY content /
 EXPOSE 80
 CMD ./scripts/start
+VOLUME /web
