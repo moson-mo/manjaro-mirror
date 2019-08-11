@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$CRON_PATTERN ./scripts/sync_mirror" | crontab - && crond
